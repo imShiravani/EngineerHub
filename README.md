@@ -214,29 +214,6 @@ cp config.example.php db.php
 
 ---
 
-## 🤝 مشارکت
-
-از مشارکتت استقبال می‌کنیم! مراحل:
-
-1. پروژه رو **Fork** کن
-2. یک برنچ بساز: `git checkout -b feature/amazing-feature`
-3. تغییراتت رو commit کن: `git commit -m "feat(calculator): add memory buttons"`
-4. push کن: `git push origin feature/amazing-feature`
-5. یک **Pull Request** باز کن
-
-### سبک کد
-- **PHP:** پیروی از [PSR-12](https://www.php-fig.org/psr/psr-12/)
-- **JS:** تورفتگی ۴ فضای خالی، نام‌گذاری `buildXxx` / `updateXxx` / `renderXxx`
-- **CSS:** شبیه BEM، هر کامپوننت در یک فایل جدا
-
----
-
-## 📄 لایسنس
-
-این پروژه تحت لایسنس **MIT** منتشر شده — برای جزئیات به فایل [LICENSE](LICENSE) مراجعه کن.
-
----
-
 ## 📞 تماس
 
 
