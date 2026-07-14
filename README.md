@@ -242,7 +242,7 @@ cp config.example.php db.php
 
 **محمد شیروانی** (Mohammad Shiravani)
 
-- 📧 ایمیل: [Mamadghx82@gmail.com]
+- 📧 ایمیل: [imshiravani@gmail.com]
 - 🐙 گیت‌هاب: https://github.com/imShiravani
 
 > 🌟 اگه این پروژه بهت کمک کرد، لطفاً یک **ستاره** بزن — این کار به بقیه هم کمک می‌کنه پیداش کنن!
