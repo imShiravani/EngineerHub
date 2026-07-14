@@ -239,9 +239,11 @@ cp config.example.php db.php
 
 ## 📞 تماس
 
-- **نویسنده:** _[اسم شما]_
-- **ایمیل:** _[your.email@example.com]_
-- **گیت‌هاب:** [_@your-username_](https://github.com/your-username)
+
+**محمد شیروانی** (Mohammad Shiravani)
+
+- 📧 ایمیل: [Mamadghx82@gmail.com]
+- 🐙 گیت‌هاب: https://github.com/imShiravani
 
 > 🌟 اگه این پروژه بهت کمک کرد، لطفاً یک **ستاره** بزن — این کار به بقیه هم کمک می‌کنه پیداش کنن!
 
