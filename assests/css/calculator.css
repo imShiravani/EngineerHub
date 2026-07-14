@@ -1,0 +1,131 @@
+.calculator {
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+.calc-screen {
+    background: #0a0f1c;
+    border-radius: 1.5rem;
+    padding: 1.2rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #2d3a5e;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.3);
+    min-height: 110px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.calc-expression {
+    font-size: 1.5rem;
+    color: #a5b4fc;
+    text-align: right;
+    min-height: 2.8rem;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    font-family: monospace;
+    line-height: 1.3;
+    height: auto;
+}
+
+.calc-result {
+    font-size: 2rem;
+    color: #f0f9ff;
+    text-align: right;
+    font-weight: 600;
+    margin-top: 0.5rem;
+    word-break: break-word;
+    min-height: 2.5rem;
+}
+
+.calc-buttons {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.6rem;
+    direction: ltr;
+}
+
+.calc-btn {
+    background: rgba(30, 41, 59, 0.9);
+    border: none;
+    border-radius: 0.8rem;
+    padding: 0.9rem 0;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #e2e8f0;
+    transition: 0.05s linear;
+    cursor: pointer;
+    backdrop-filter: blur(4px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.calc-btn:active {
+    transform: scale(0.96);
+}
+
+.calc-btn.func {
+    font-size: 0.8rem;
+    background: #2d3a5e;
+}
+
+.calc-btn.op {
+    background: #4f46e5;
+    color: white;
+    font-weight: bold;
+}
+
+.calc-btn.equal {
+    background: #10b981;
+    color: white;
+}
+
+.calc-btn.clear {
+    background: #ef4444;
+    color: white;
+}
+
+.calc-btn.back {
+    background: #f59e0b;
+}
+
+@media (max-width: 700px) {
+    .calc-buttons {
+        gap: 0.5rem;
+    }
+    .calc-btn {
+        padding: 0.7rem 0;
+        font-size: 0.8rem;
+    }
+    .calc-btn.func {
+        font-size: 0.7rem;
+    }
+    .calc-expression {
+        font-size: 1.2rem;
+    }
+    .calc-result {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .calc-buttons {
+        gap: 0.4rem;
+    }
+    .calc-btn {
+        padding: 0.6rem 0;
+        font-size: 0.75rem;
+    }
+    .calc-btn.func {
+        font-size: 0.65rem;
+    }
+    .calc-expression {
+        font-size: 1rem;
+    }
+    .calc-result {
+        font-size: 1.3rem;
+    }
+}

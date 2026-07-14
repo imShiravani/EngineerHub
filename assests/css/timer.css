@@ -1,0 +1,226 @@
+.timer-container {
+    max-width: 700px;
+    margin: 0 auto;
+    direction: rtl;
+    background: rgba(15, 25, 45, 0.5);
+    backdrop-filter: blur(12px);
+    border-radius: 2rem;
+    padding: 1.5rem;
+    border: 1px solid rgba(139, 92, 246, 0.4);
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.2);
+}
+
+.timer-container h2 {
+    text-align: center;
+    background: linear-gradient(135deg, #c084fc, #fbbf24);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 1rem;
+}
+
+.tabs {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.tab-btn {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(139, 92, 246, 0.5);
+    border-radius: 2rem;
+    padding: 0.5rem 1.5rem;
+    font-weight: 600;
+    color: #e2e8f0;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.tab-btn.active {
+    background: linear-gradient(95deg, #8b5cf6, #fbbf24);
+    border-color: #fbbf24;
+    color: #0f172a;
+    box-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
+}
+
+.panel {
+    display: none;
+    animation: fade 0.2s ease;
+}
+
+.panel.active {
+    display: block;
+}
+
+@keyframes fade {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.time-display {
+    text-align: center;
+    font-size: 3.5rem;
+    font-family: monospace;
+    font-weight: 700;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 3rem;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    letter-spacing: 5px;
+    color: #fbbf24;
+    text-shadow: 0 0 8px #fbbf24;
+    border: 1px solid #8b5cf6;
+    box-shadow: inset 0 0 10px rgba(139, 92, 246, 0.3);
+}
+
+.button-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.timer-btn {
+    background: rgba(139, 92, 246, 0.2);
+    border: 1px solid #8b5cf6;
+    border-radius: 3rem;
+    padding: 0.6rem 1.2rem;
+    font-weight: 500;
+    color: #e2e8f0;
+    cursor: pointer;
+    transition: 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.timer-btn:hover {
+    background: #8b5cf6;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 0 12px #8b5cf6;
+}
+
+.timer-btn.warning {
+    border-color: #fbbf24;
+    color: #fbbf24;
+}
+
+.timer-btn.warning:hover {
+    background: #fbbf24;
+    color: #0f172a;
+}
+
+.timer-input-group {
+    display: flex;
+    gap: 0.8rem;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.timer-input-group input {
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid #8b5cf6;
+    border-radius: 2rem;
+    padding: 0.5rem 1rem;
+    color: #fbbf24;
+    width: 80px;
+    text-align: center;
+}
+
+.lap-list {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 1.5rem;
+    padding: 0.8rem;
+    max-height: 200px;
+    overflow-y: auto;
+    margin-top: 1rem;
+}
+
+.lap-empty {
+    text-align: center;
+    opacity: 0.6;
+    padding: 1rem;
+    color: #cbd5e6;
+}
+
+.lap-card {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 1rem;
+    padding: 0.6rem 1rem;
+    margin-bottom: 0.6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-right: 3px solid #fbbf24;
+    transition: 0.2s;
+}
+
+.lap-card:hover {
+    background: rgba(139, 92, 246, 0.3);
+    transform: translateX(-4px);
+}
+
+.lap-number {
+    font-weight: bold;
+    color: #fbbf24;
+    font-size: 0.9rem;
+}
+
+.lap-time {
+    font-family: monospace;
+    letter-spacing: 1px;
+    color: #e2e8f0;
+    font-size: 0.9rem;
+}
+
+.lap-icon {
+    font-size: 1.2rem;
+}
+
+.clear-history {
+    background: none;
+    border: none;
+    color: #fbbf24;
+    cursor: pointer;
+    font-size: 0.75rem;
+    margin-top: 8px;
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 6px;
+    border-radius: 2rem;
+    transition: 0.2s;
+}
+
+.clear-history:hover {
+    background: rgba(239, 68, 68, 0.3);
+    color: #ef4444;
+}
+
+@media (max-width: 600px) {
+    .time-display {
+        font-size: 2.2rem;
+        letter-spacing: 2px;
+    }
+    .timer-btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+    }
+    .timer-input-group input {
+        width: 60px;
+    }
+    .lap-card {
+        padding: 0.4rem 0.8rem;
+    }
+}

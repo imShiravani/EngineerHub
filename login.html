@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>ورود | مرکز مهندس</title>
+    <link rel="stylesheet" href="assests/css/login.css">
+    <link rel="stylesheet" href="assests/css/catalog.css">
+    <style>
+        .lang-switch .lang-circle {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.8rem;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.2s ease;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(4px);
+            color: #e2e8f0;
+            user-select: none;
+        }
+        
+        .lang-switch .lang-circle.active {
+            border-color: #00e5e5;
+            box-shadow: 0 0 12px #00e5e5;
+            background: rgba(0, 229, 229, 0.25);
+            color: #00e5e5;
+        }
+        
+        .lang-switch .lang-circle:hover {
+            transform: scale(1.05);
+            background: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="particles" id="particles"></div>
+    <div class="glass-card" id="glassCard">
+        <div class="lang-switch">
+            <div class="lang-circle" data-lang="en">EN</div>
+            <div class="lang-circle active" data-lang="fa">FA</div>
+        </div>
+        <div class="logo-area">
+            <div class="logo-icon">🧑‍💻</div>
+            <h1 id="logoTitle">مرکز مهندس</h1>
+            <div class="typewriter" id="typewriterText"></div>
+        </div>
+        <div class="tabs" id="tabsContainer">
+            <button class="tab-btn active" data-tab="login" id="loginTabBtn">ورود</button>
+            <button class="tab-btn" data-tab="register" id="registerTabBtn">ثبت‌نام</button>
+            <div class="tab-slider" id="tabSlider"></div>
+        </div>
+        <div class="forms-container">
+            <div id="loginForm" class="form active">
+                <div class="input-group"><span class="field-icon">📧</span><input type="email" id="loginEmail" placeholder="ایمیل یا نام کاربری"></div>
+                <div class="input-group" id="loginPassGroup"><span class="field-icon">🔒</span><input type="password" id="loginPassword" placeholder="رمز عبور"><button type="button" class="toggle-password" data-target="loginPassword">👁️</button></div>
+                <div class="options"><label class="checkbox"><input type="checkbox" id="rememberMe"> مرا به خاطر
+                        بسپار</label></div>
+                <button class="btn-primary" id="loginBtn">🔑 ورود</button>
+                <div id="loginMessage" class="message"></div>
+            </div>
+            <div id="registerForm" class="form">
+                <div class="input-group"><span class="field-icon">👤</span><input type="text" id="regName" placeholder="نام و نام خانوادگی"></div>
+                <div class="input-group"><span class="field-icon">📧</span><input type="email" id="regEmail" placeholder="ایمیل"></div>
+                <div class="input-group" id="regPassGroup"><span class="field-icon">🔒</span><input type="password" id="regPassword" placeholder="رمز عبور (حداقل ۶ کاراکتر)"><button type="button" class="toggle-password" data-target="regPassword">👁️</button></div>
+                <div class="input-group" id="confirmGroup"><span class="field-icon">🔒</span><input type="password" id="regConfirm" placeholder="تکرار رمز عبور"><button type="button" class="toggle-password" data-target="regConfirm">👁️</button></div>
+                <button class="btn-primary" id="registerBtn" disabled>📝 ثبت‌نام</button>
+                <div id="registerMessage" class="message"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assests/js/login.js"></script>
+    <script src="assests/js/iconManager.js"></script>
+    <script>
+        // کاتالوگ لاگین (همان قبلی)
+        var loginCatalog = {
+            login: {
+                fa: {
+                    title: "🔐 ورود به حساب",
+                    description: "به مرکز مهندس خوش آمدید. برای استفاده از ابزارها و امکانات سایت، لطفاً وارد حساب خود شوید.",
+                    features: ["ایمیل و رمز عبور خود را وارد کنید", "گزینه «مرا به خاطر بسپار» برای ماندگاری جلسه", "پس از ورود، به صفحه اصلی هدایت می‌شوید"]
+                },
+                en: {
+                    title: "🔐 Login",
+                    description: "Welcome to EngineerHub. Please log in to use tools and features.",
+                    features: ["Enter your email and password", "Check 'Remember me' to stay logged in", "After login, you will be redirected to the dashboard"]
+                }
+            },
+            register: {
+                fa: {
+                    title: "📝 ثبت‌نام",
+                    description: "حساب کاربری جدید بسازید و از تمام امکانات مرکز مهندس استفاده کنید.",
+                    features: ["نام کامل، ایمیل و رمز عبور (حداقل ۶ کاراکتر) را وارد کنید", "رمز عبور را دوباره تکرار کنید", "پس از ثبت‌نام، به طور خودکار وارد سیستم می‌شوید", "ایمیل شما باید یکتا و معتبر باشد"]
+                },
+                en: {
+                    title: "📝 Register",
+                    description: "Create a new account and enjoy all features of EngineerHub.",
+                    features: ["Enter full name, email, and password (min 6 characters)", "Confirm your password", "After registration, you will be automatically logged in", "Email must be unique and valid"]
+                }
+            }
+        };
+
+        function escapeHtmlLogin(str) {
+            if (!str) return '';
+            return String(str).replace(/[&<>]/g, function(m) {
+                return m === '&' ? '&amp;' : (m === '<' ? '&lt;' : '&gt;');
+            });
+        }
+
+        function showLoginCatalog(tabId) {
+            var seenKey = 'catalog_login_' + tabId;
+            if (sessionStorage.getItem(seenKey) === 'true') return;
+            var lang = (typeof currentLang !== 'undefined') ? currentLang : 'fa';
+            var data = loginCatalog[tabId] ? (loginCatalog[tabId][lang] || loginCatalog[tabId].fa) : null;
+            if (!data) return;
+            var overlay = document.createElement('div');
+            overlay.className = 'catalog-overlay';
+            var featuresHtml = '<ul class="catalog-features">';
+            for (var i = 0; i < data.features.length; i++) {
+                featuresHtml += '<li>' + escapeHtmlLogin(data.features[i]) + '</li>';
+            }
+            featuresHtml += '</ul>';
+            var projectText = (lang === 'fa') ?
+                "پروژه «مرکز مهندس | EngineerHub» یک داشبورد تحت وب با طراحی شیشه‌ای، دوزبانه و ابزارهای کاربردی است که توسط محمد شیروانی طراحی شده است." :
+                "The 'EngineerHub' project is a web dashboard with glassmorphism design, bilingual (Persian/English) and useful tools, designed by Mohammad Shiravani.";
+            overlay.innerHTML = '<div class="catalog-card">' +
+                '<div class="catalog-icon">' + escapeHtmlLogin(data.title.split(' ')[0]) + '</div>' +
+                '<div class="catalog-title">' + escapeHtmlLogin(data.title) + '</div>' +
+                '<div class="catalog-description">' + escapeHtmlLogin(data.description) + '</div>' +
+                featuresHtml +
+                '<div class="catalog-credit" style="margin-top: 16px; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.75rem; color: #94a3b8; text-align: center;">' + escapeHtmlLogin(projectText) + '</div>' +
+                '<button class="catalog-btn">✓ خواندم و تأیید میکنم</button>' +
+                '</div>';
+            document.body.appendChild(overlay);
+            var btn = overlay.querySelector('.catalog-btn');
+            btn.addEventListener('click', function() {
+                sessionStorage.setItem(seenKey, 'true');
+                overlay.remove();
+            });
+            overlay.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+            var card = overlay.querySelector('.catalog-card');
+            if (card) card.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var activeTab = document.querySelector('.tab-btn.active');
+            var tabId = activeTab ? activeTab.getAttribute('data-tab') : 'login';
+            setTimeout(function() {
+                showLoginCatalog(tabId);
+            }, 500);
+            var tabs = document.querySelectorAll('.tab-btn');
+            for (var i = 0; i < tabs.length; i++) {
+                tabs[i].addEventListener('click', function() {
+                    var newTabId = this.getAttribute('data-tab');
+                    setTimeout(function() {
+                        showLoginCatalog(newTabId);
+                    }, 200);
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

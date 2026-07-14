@@ -1,0 +1,131 @@
+.catalog-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(8px);
+    z-index: 20000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: catalogFadeIn 0.25s ease;
+}
+
+@keyframes catalogFadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.catalog-card {
+    max-width: 420px;
+    width: 90%;
+    background: #0f172a;
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    color: #e2e8f0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    animation: catalogSlideUp 0.3s ease;
+}
+
+@keyframes catalogSlideUp {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.catalog-icon {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+}
+
+.catalog-title {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, #c084fc, #60a5fa);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.catalog-description {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 1.2rem;
+    text-align: right;
+    direction: rtl;
+    color: #cbd5e6;
+}
+
+.catalog-features {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+    text-align: right;
+    direction: rtl;
+}
+
+.catalog-features li {
+    margin-bottom: 0.5rem;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px 12px;
+    border-radius: 2rem;
+}
+
+.catalog-features li::before {
+    content: "✓";
+    color: #00e5e5;
+    font-weight: bold;
+}
+
+.catalog-btn {
+    background: #00e5e5;
+    border: none;
+    border-radius: 2rem;
+    padding: 0.5rem 1.5rem;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #0f172a;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-top: 0.5rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.catalog-btn:hover {
+    transform: scale(1.02);
+    background: #22d3ee;
+    box-shadow: 0 0 12px rgba(0, 229, 229, 0.6);
+}
+
+@media (max-width: 550px) {
+    .catalog-card {
+        width: 90%;
+        padding: 1.2rem;
+    }
+    .catalog-title {
+        font-size: 1.2rem;
+    }
+    .catalog-description {
+        font-size: 0.8rem;
+    }
+}

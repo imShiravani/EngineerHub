@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>مرکز مهندس | EngineerHub</title>
+
+    <link rel="stylesheet" href="assests/libs/bootstrap.min.css">
+    <link rel="stylesheet" href="assests/css/main.css">
+    <link rel="stylesheet" href="assests/css/home.css">
+    <link rel="stylesheet" href="assests/css/calculator.css">
+    <link rel="stylesheet" href="assests/css/password.css">
+    <link rel="stylesheet" href="assests/css/filemanager.css">
+    <link rel="stylesheet" href="assests/css/videoplayer.css">
+    <link rel="stylesheet" href="assests/css/chatbot.css">
+    <link rel="stylesheet" href="assests/css/textunit.css">
+    <link rel="stylesheet" href="assests/css/editor.css">
+    <link rel="stylesheet" href="assests/css/timer.css">
+    <link rel="stylesheet" href="assests/css/colorpicker.css">
+    <link rel="stylesheet" href="assests/css/musicplayer.css">
+    <link rel="stylesheet" href="assests/css/miniplayer.css">
+    <link rel="stylesheet" href="assests/css/catalog.css">
+
+    <style>
+         :root {
+            --primary-color: {
+                {
+                    primaryColor
+                }
+            }
+            ;
+        }
+    </style>
+
+    <script src="assests/libs/jsmediatags.min.js"></script>
+    <script src="assests/libs/html2pdf.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.4.2/mammoth.browser.min.js"></script>
+
+    <style>
+        /* استایل دایره‌های EN/FA */
+        
+        .lang-circle {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.2s ease;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(4px);
+            color: #e2e8f0;
+            user-select: none;
+        }
+        
+        .lang-circle.active {
+            border-color: #00e5e5;
+            box-shadow: 0 0 12px #00e5e5;
+            background: rgba(0, 229, 229, 0.25);
+            color: #00e5e5;
+        }
+        
+        .lang-circle:hover {
+            transform: scale(1.05);
+            background: rgba(255, 255, 255, 0.2);
+        }
+        /* سایر استایل‌های منوی کاربری (دست نزن) */
+        
+        .account-container {
+            position: relative !important;
+        }
+        
+        .user-glass-menu {
+            position: absolute !important;
+            top: calc(100% + 12px) !important;
+            left: 0 !important;
+            min-width: 320px !important;
+            background: rgba(0, 0, 0, 0.85) !important;
+            backdrop-filter: blur(18px) !important;
+            border-radius: 1.8rem !important;
+            border: 1px solid #00e5e5 !important;
+            box-shadow: 0 0 20px rgba(0, 229, 229, 0.3) !important;
+            padding: 1.2rem !important;
+            z-index: 10000 !important;
+            opacity: 0 !important;
+            visibility: hidden !important;
+            transition: opacity 0.25s ease, visibility 0.25s, transform 0.25s cubic-bezier(0.2, 0.9, 0.4, 1.1) !important;
+            transform: translateY(-12px) scale(0.96) !important;
+            pointer-events: none !important;
+        }
+        
+        .user-glass-menu.show {
+            opacity: 1 !important;
+            visibility: visible !important;
+            transform: translateY(0) scale(1) !important;
+            pointer-events: auto !important;
+        }
+        
+        .user-menu-header {
+            display: flex !important;
+            align-items: center !important;
+            gap: 14px !important;
+            margin-bottom: 1rem !important;
+            padding-bottom: 0.8rem !important;
+            border-bottom: 1px solid rgba(0, 229, 229, 0.25) !important;
+        }
+        
+        .user-avatar {
+            width: 56px !important;
+            height: 56px !important;
+            background: #00e5e5 !important;
+            border-radius: 50% !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            font-size: 1.8rem !important;
+            color: #000 !important;
+            box-shadow: 0 0 12px rgba(0, 229, 229, 0.6) !important;
+        }
+        
+        .user-name {
+            font-size: 1rem !important;
+            font-weight: bold !important;
+            color: #00e5e5 !important;
+            margin-bottom: 0.2rem !important;
+        }
+        
+        .role-badge {
+            display: inline-block !important;
+            background: rgba(0, 229, 229, 0.15) !important;
+            border: 1px solid #00e5e5 !important;
+            border-radius: 2rem !important;
+            padding: 0.2rem 0.7rem !important;
+            font-size: 0.7rem !important;
+            font-weight: bold !important;
+            color: #00e5e5 !important;
+        }
+        
+        .user-email {
+            color: #00e5e5 !important;
+            font-size: 0.8rem !important;
+            margin: 0.5rem 0 !important;
+            word-break: break-all !important;
+        }
+        
+        .divider {
+            height: 1px !important;
+            background: rgba(0, 229, 229, 0.2) !important;
+            margin: 0.8rem 0 !important;
+        }
+        
+        .quick-tools-title {
+            font-size: 0.7rem !important;
+            color: #94a3b8 !important;
+            margin-bottom: 0.5rem !important;
+        }
+        
+        .quick-tools {
+            display: flex !important;
+            gap: 0.8rem !important;
+            margin-bottom: 0.8rem !important;
+        }
+        
+        .quick-tool-item {
+            flex: 1 !important;
+            text-align: center !important;
+            background: rgba(0, 229, 229, 0.15) !important;
+            border-radius: 2rem !important;
+            padding: 6px 6px !important;
+            font-size: 0.75rem !important;
+            color: #00e5e5 !important;
+            cursor: pointer !important;
+            transition: all 0.2s !important;
+            border: 1px solid transparent !important;
+        }
+        
+        .quick-tool-item:hover {
+            background: rgba(0, 229, 229, 0.4) !important;
+            transform: translateY(-2px) !important;
+            border-color: #00e5e5 !important;
+        }
+        
+        .admin-shortcut {
+            background: rgba(0, 229, 229, 0.1) !important;
+            border-radius: 2rem !important;
+            padding: 8px !important;
+            text-align: center !important;
+            margin-bottom: 0.8rem !important;
+            border: 1px solid rgba(0, 229, 229, 0.4) !important;
+        }
+        
+        .admin-shortcut a {
+            color: #00e5e5 !important;
+            text-decoration: none !important;
+            font-weight: 600 !important;
+            font-size: 0.75rem !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 6px !important;
+        }
+        
+        .admin-shortcut a:hover {
+            color: white !important;
+            text-shadow: 0 0 4px #00e5e5 !important;
+        }
+        
+        .user-login-time {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 6px !important;
+            font-size: 0.7rem !important;
+            color: #00e5e5 !important;
+            background: rgba(0, 0, 0, 0.3) !important;
+            padding: 0.4rem !important;
+            border-radius: 2rem !important;
+            font-family: monospace !important;
+            margin-bottom: 0.8rem !important;
+        }
+        
+        .dropdown-logout-btn {
+            width: 100% !important;
+            background: rgba(0, 229, 229, 0.15) !important;
+            border: 1px solid #00e5e5 !important;
+            border-radius: 2rem !important;
+            padding: 8px 0 !important;
+            color: #00e5e5 !important;
+            font-weight: bold !important;
+            font-size: 0.8rem !important;
+            cursor: pointer !important;
+            transition: all 0.2s !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 8px !important;
+        }
+        
+        .dropdown-logout-btn:hover {
+            background: rgba(0, 229, 229, 0.4) !important;
+            color: white !important;
+            transform: scale(1.02) !important;
+        }
+        
+        .dropdown-delete-btn {
+            width: 100% !important;
+            background: rgba(239, 68, 68, 0.2) !important;
+            border: 1px solid #ef4444 !important;
+            border-radius: 2rem !important;
+            padding: 8px 0 !important;
+            color: #ef4444 !important;
+            font-weight: bold !important;
+            font-size: 0.8rem !important;
+            cursor: pointer !important;
+            transition: all 0.2s !important;
+            display: none !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 8px !important;
+            margin-top: 8px;
+        }
+        
+        .dropdown-delete-btn.show {
+            display: flex !important;
+        }
+        
+        .dropdown-delete-btn:hover {
+            background: rgba(239, 68, 68, 0.5) !important;
+            color: white !important;
+            transform: scale(1.02) !important;
+        }
+        
+        .lang-switch-header {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 6px 12px;
+            border-radius: 3rem;
+            backdrop-filter: blur(4px);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="menu-toggle" id="menuToggle">
+        <span style="font-size: 1.8rem;">☰</span>
+    </div>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <button class="close-sidebar" id="closeSidebar">✕</button>
+        </div>
+        <div class="tools-list">
+            <div class="tool-card-sidebar active" data-tool="home"><span class="tool-icon">🏠</span><span data-i18n="nav_home">خانه</span></div>
+            <div class="tool-card-sidebar" data-tool="calculator"><span class="tool-icon">🧮</span><span data-i18n="nav_calculator">ماشین‌حساب مهندسی</span></div>
+            <div class="tool-card-sidebar" data-tool="password"><span class="tool-icon">🔐</span><span data-i18n="nav_password">تولید رمز قوی</span></div>
+            <div class="tool-card-sidebar" data-tool="smarteditor"><span class="tool-icon">📝</span><span data-i18n="nav_smarteditor">ویرایشگر حرفه‌ای متن</span></div>
+            <div class="tool-card-sidebar" data-tool="textunit"><span class="tool-icon">📊</span><span data-i18n="nav_textunit">متن و مبدل</span></div>
+            <div class="tool-card-sidebar" data-tool="colorpicker"><span class="tool-icon">🎨</span><span data-i18n="nav_colorpicker">پالت رنگ</span></div>
+            <div class="tool-card-sidebar" data-tool="timer"><span class="tool-icon">⏱️</span><span data-i18n="nav_timer">کرنومتر و تایمر</span></div>
+            <div class="tool-card-sidebar" data-tool="musicplayer"><span class="tool-icon">🎵</span><span data-i18n="nav_musicplayer">پلیر موسیقی</span></div>
+            <div class="tool-card-sidebar" data-tool="videoplayer"><span class="tool-icon">🎬</span><span data-i18n="nav_videoplayer">پلیر ویدیو</span></div>
+            <div class="tool-card-sidebar" data-tool="filemanager"><span class="tool-icon">📂</span><span data-i18n="nav_filemanager">مدیریت فایل</span></div>
+        </div>
+    </aside>
+
+    <div class="main-content" id="mainContent">
+        <div class="greeting">
+            <div class="header-row">
+                <div class="flag-container" style="margin-right: 70px;">
+                    <div class="lang-switch-header" id="langSwitchHeader">
+                        <div class="lang-circle" data-lang="en" id="flagEn">EN</div>
+                        <div class="lang-circle active" data-lang="fa" id="flagFa">FA</div>
+                    </div>
+                </div>
+                <div class="title-glass">
+                    <h1>مرکز مهندس | EngineerHub</h1>
+                </div>
+                <div class="account-container">
+                    <div class="glass-flag" id="accountBtn" style="background: rgba(0,0,0,0.5); border: 1px solid white; cursor: pointer;">
+                        <span style="font-size: 1.8rem; color: white; text-shadow: 0 0 2px black;">👤</span>
+                    </div>
+                    <div class="user-glass-menu" id="userGlassMenu">
+                        <div class="user-menu-header">
+                            <div class="user-avatar">✨</div>
+                            <div>
+                                <div class="user-name" id="dropdownUserName"></div>
+                                <span id="userRoleBadge" class="role-badge" data-role-value></span>
+                            </div>
+                        </div>
+                        <div class="user-email" id="dropdownUserEmail"></div>
+                        <div class="divider"></div>
+                        <div class="quick-tools-title" data-i18n-user="quick_tools_title">⚡ دسترسی سریع</div>
+                        <div class="quick-tools">
+                            <div class="quick-tool-item" data-tool="calculator" data-i18n-user="quick_tool_calculator">
+                                🧮 ماشین حساب</div>
+                            <div class="quick-tool-item" data-tool="musicplayer" data-i18n-user="quick_tool_musicplayer">🎵 موزیک</div>
+                            <div class="quick-tool-item" data-tool="smarteditor" data-i18n-user="quick_tool_editor">📝 ویرایشگر
+                            </div>
+                        </div>
+                        <div id="adminShortcutContainer" class="admin-shortcut" style="display: none;">
+                            <a href="adminpanel.php" data-i18n-user="admin_shortcut_text">⚙️ ورود به پنل مدیریت</a>
+                        </div>
+                        <div class="divider"></div>
+                        <div class="user-login-time">
+                            <span id="dropdownLoginTimeValue"></span>
+                        </div>
+                        <button id="dropdownLogoutBtn" class="dropdown-logout-btn" data-i18n-user="logout_button">🚪
+                            خروج از حساب</button>
+                        <button id="dropdownDeleteAccountBtn" class="dropdown-delete-btn">🗑️ حذف حساب کاربری</button>
+                    </div>
+                </div>
+            </div>
+            <div class="info-row">
+                <div></div>
+                <div class="current-tool-name" id="currentToolName"></div>
+                <div class="server-info-left" id="serverInfo"></div>
+            </div>
+        </div>
+        <div class="widget-container" id="widgetContainer"></div>
+    </div>
+
+    <div id="miniPlayer" class="mini-player" style="display: none;">
+        <div class="mini-player-glass">
+            <div class="mini-player-content">
+                <div class="mini-cover-area">
+                    <img id="miniCoverImg" class="mini-cover-img" src="assests/images/default-album.jpg" alt="cover">
+                </div>
+                <div class="mini-info">
+                    <div class="mini-title" id="miniTitle">آهنگ در حال پخش</div>
+                    <div class="mini-artist" id="miniArtist">خواننده</div>
+                </div>
+                <div class="mini-controls">
+                    <span id="miniCurrentTime" class="mini-time">00:00</span>
+                    <input type="range" id="miniVolumeSlider" class="mini-volume-slider" min="0" max="1" step="0.01" value="0.7">
+                    <button id="miniMuteBtn" class="mini-ctrl" title="بیصدا">🔊</button>
+                    <button id="miniNextBtn" class="mini-ctrl" title="بعدی">⏭️</button>
+                    <button id="miniPlayPauseBtn" class="mini-ctrl" title="پخش/توقف">▶️</button>
+                    <button id="miniPrevBtn" class="mini-ctrl" title="قبلی">⏮️</button>
+                    <button id="miniRepeatBtn" class="mini-ctrl" title="تکرار">🔁</button>
+                    <button id="miniCloseBtn" class="mini-ctrl close-btn" title="بستن">✖️</button>
+                    <span id="miniTotalTime" class="mini-time">00:00</span>
+                </div>
+            </div>
+            <div class="mini-progress-container" id="miniProgressBar">
+                <div class="mini-progress-fill" id="miniProgressFill"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assests/js/config.js" defer></script>
+    <script src="assests/js/iconManager.js" defer></script>
+    <script src="assests/js/home.js" defer></script>
+    <script src="assests/js/calculator.js" defer></script>
+    <script src="assests/js/password.js" defer></script>
+    <script src="assests/js/videoplayer.js" defer></script>
+    <script src="assests/js/filemanager.js" defer></script>
+    <script src="assests/js/colorpicker.js" defer></script>
+    <script src="assests/js/textunit.js" defer></script>
+    <script src="assests/js/editor.js" defer></script>
+    <script src="assests/js/timer.js" defer></script>
+    <script src="assests/js/musicplayer.js" defer></script>
+    <script src="assests/js/miniplayer.js" defer></script>
+    <script src="assests/js/sync_albums.js" defer></script>
+    <script src="assests/js/catalog.js" defer></script>
+    <script src="assests/js/main.js" defer></script>
+    <script src="assests/js/chatbot.js" defer></script>
+
+    <script id="userDataScript"></script>
+
+    <script>
+        // ============================================================
+        //  اصلاحات مدیریت زبان با دایره‌های EN/FA
+        // ============================================================
+
+        // توابع کمکی (اگر در config.js نباشند)
+        function getStoredLanguage() {
+            var stored = localStorage.getItem('appLang');
+            if (stored === 'en' || stored === 'fa') return stored;
+            return 'fa';
+        }
+
+        function setStoredLanguage(lang) {
+            localStorage.setItem('appLang', lang);
+        }
+
+        // تابع به‌روزرسانی کلاس active روی دایره‌ها
+        function setActiveCircle(lang) {
+            var flagEn = document.getElementById('flagEn');
+            var flagFa = document.getElementById('flagFa');
+            if (!flagEn || !flagFa) return;
+            if (lang === 'en') {
+                flagEn.classList.add('active');
+                flagFa.classList.remove('active');
+            } else {
+                flagFa.classList.add('active');
+                flagEn.classList.remove('active');
+            }
+        }
+
+        // تابع تغییر زبان (با هماهنگی با main.js)
+        function setLanguage(lang) {
+            if (lang !== 'fa' && lang !== 'en') lang = 'fa';
+            if (typeof window.setLanguage === 'function') {
+                window.setLanguage(lang);
+            } else {
+                // fallback
+                if (typeof currentLang !== 'undefined') currentLang = lang;
+                setStoredLanguage(lang);
+                setActiveCircle(lang);
+                if (typeof updateUILanguage === 'function') updateUILanguage();
+                if (typeof updateServerInfo === 'function') updateServerInfo();
+            }
+            setActiveCircle(lang);
+        }
+
+        // ---- بارگذاری اولیه ----
+        document.addEventListener('DOMContentLoaded', function() {
+            var savedLang = getStoredLanguage();
+            setActiveCircle(savedLang);
+            if (typeof window.setLanguage === 'function') {
+                window.setLanguage(savedLang);
+            } else {
+                if (typeof currentLang !== 'undefined') currentLang = savedLang;
+                if (typeof updateUILanguage === 'function') updateUILanguage();
+                if (typeof updateServerInfo === 'function') updateServerInfo();
+            }
+            // کاتالوگ home فقط توسط main.js مدیریت می‌شود
+            // فراخوانی اضافی حذف شد
+        });
+
+        // ---- رویدادهای کلیک روی دایره‌ها ----
+        var flagEn = document.getElementById('flagEn');
+        var flagFa = document.getElementById('flagFa');
+
+        if (flagEn) {
+            flagEn.addEventListener('click', function() {
+                setLanguage('en');
+                setActiveCircle('en');
+            });
+        }
+        if (flagFa) {
+            flagFa.addEventListener('click', function() {
+                setLanguage('fa');
+                setActiveCircle('fa');
+            });
+        }
+
+        // ---- منوی کاربری ----
+        window.updateUserMenu = function() {
+            if (window.userData) {
+                var ud = window.userData;
+                var nameSpan = document.getElementById('dropdownUserName');
+                var emailSpan = document.getElementById('dropdownUserEmail');
+                var roleSpan = document.getElementById('userRoleBadge');
+                var loginTimeSpan = document.getElementById('dropdownLoginTimeValue');
+                var adminDiv = document.getElementById('adminShortcutContainer');
+                var deleteAccountBtn = document.getElementById('dropdownDeleteAccountBtn');
+
+                if (nameSpan) nameSpan.innerText = ud.userName || 'مهمان';
+                if (emailSpan) emailSpan.innerText = ud.userEmail || 'ایمیل ثبت نشده';
+                if (roleSpan) {
+                    roleSpan.setAttribute('data-role-value', ud.userRole);
+                    roleSpan.innerText = (ud.userRole === 'admin') ? 'مدیر سیستم' : 'کاربر عادی';
+                }
+                if (adminDiv) adminDiv.style.display = (ud.userRole === 'admin') ? 'block' : 'none';
+                if (deleteAccountBtn) {
+                    if (ud.userRole === 'admin') {
+                        deleteAccountBtn.classList.remove('show');
+                    } else {
+                        deleteAccountBtn.classList.add('show');
+                    }
+                }
+                if (loginTimeSpan && ud.loginTimestamp) {
+                    if (typeof formatPersianDateTime === 'function') {
+                        loginTimeSpan.innerHTML = '🕒 ورود: ' + formatPersianDateTime(ud.loginTimestamp);
+                    } else {
+                        loginTimeSpan.innerHTML = '🕒 ورود: ' + ud.loginTimestamp;
+                    }
+                } else if (loginTimeSpan) {
+                    loginTimeSpan.innerHTML = '🕒 ورود: نامشخص';
+                }
+            } else {
+                setTimeout(window.updateUserMenu, 300);
+            }
+        };
+
+        // ---- دسترسی سریع ----
+        var quickTools = document.querySelectorAll('.quick-tool-item');
+        for (var i = 0; i < quickTools.length; i++) {
+            quickTools[i].addEventListener('click', function(e) {
+                e.stopPropagation();
+                var toolId = this.getAttribute('data-tool');
+                if (typeof switchTool !== 'undefined') {
+                    switchTool(toolId);
+                    var menu = document.getElementById('userGlassMenu');
+                    if (menu) menu.classList.remove('show');
+                }
+            });
+        }
+
+        // ---- دکمه خروج ----
+        var logoutBtn = document.getElementById('dropdownLogoutBtn');
+        if (logoutBtn) {
+            logoutBtn.addEventListener('click', function() {
+                if (typeof resetCatalogsOnLogout === 'function') resetCatalogsOnLogout();
+                localStorage.removeItem('appLang');
+                fetch('api_logout.php', {
+                    method: 'POST'
+                }).then(function() {
+                    window.location.href = 'login.html';
+                });
+            });
+        }
+
+        // ---- دکمه حذف حساب ----
+        var deleteAccountBtn = document.getElementById('dropdownDeleteAccountBtn');
+        if (deleteAccountBtn) {
+            deleteAccountBtn.addEventListener('click', async function() {
+                if (confirm('آیا از حذف کامل حساب کاربری خود اطمینان دارید؟ این عمل غیرقابل بازگشت است.')) {
+                    try {
+                        const response = await fetch('api_delete_account.php', {
+                            method: 'POST'
+                        });
+                        const result = await response.json();
+                        if (result.success) {
+                            localStorage.removeItem('appLang');
+                            alert('حساب شما حذف شد. به صفحه ورود هدایت می‌شوید.');
+                            window.location.href = 'login.html';
+                        } else {
+                            alert('خطا: ' + result.message);
+                        }
+                    } catch (err) {
+                        alert('مشکل در ارتباط با سرور');
+                    }
+                }
+            });
+        }
+
+        // ---- منوی کاربر: باز و بسته شدن ----
+        var accountBtn = document.getElementById('accountBtn');
+        var glassMenu = document.getElementById('userGlassMenu');
+        if (accountBtn && glassMenu) {
+            accountBtn.addEventListener('mouseenter', function() {
+                glassMenu.classList.add('show');
+            });
+            accountBtn.addEventListener('mouseleave', function() {
+                setTimeout(function() {
+                    if (!glassMenu.matches(':hover')) glassMenu.classList.remove('show');
+                }, 150);
+            });
+            glassMenu.addEventListener('mouseenter', function() {
+                glassMenu.classList.add('show');
+            });
+            glassMenu.addEventListener('mouseleave', function() {
+                glassMenu.classList.remove('show');
+            });
+            accountBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                glassMenu.classList.toggle('show');
+            });
+            document.addEventListener('click', function(e) {
+                if (!glassMenu.contains(e.target) && !accountBtn.contains(e.target)) {
+                    glassMenu.classList.remove('show');
+                }
+            });
+        }
+
+        // ---- فراخوانی اولیه ----
+        setTimeout(function() {
+            if (typeof window.updateUserMenu === 'function') {
+                window.updateUserMenu();
+            }
+        }, 200);
+
+        // ---- مخفی کردن ابزارهای غیرفعال ----
+        if (window.userData && window.userData.toolsEnabled) {
+            var enabledTools = window.userData.toolsEnabled;
+            var sidebarItems = document.querySelectorAll('.tool-card-sidebar');
+            for (var i = 0; i < sidebarItems.length; i++) {
+                var item = sidebarItems[i];
+                var toolId = item.getAttribute('data-tool');
+                if (toolId && enabledTools[toolId] === false) item.style.display = 'none';
+            }
+        }
+    </script>
+
+</body>
+
+</html>
